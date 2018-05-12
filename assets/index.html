@@ -1,0 +1,12 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect();
+  socket.emit('scrape', { using: 'nightmare' }, function(response){
+      document.querySelector('#nightmare-response').innerHTML = response;
+  });
+  socket.emit('scrape', { using: 'puppeteer' }, function(response){
+    document.querySelector('#puppeteer-response').innerHTML = response;
+  });
+</script>
+<p>Nightmare response: <b id="nightmare-response"></b></p>
+<p>Puppeteer response: <b id="puppeteer-response"></b></p>
